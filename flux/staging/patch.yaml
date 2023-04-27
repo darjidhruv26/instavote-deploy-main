@@ -1,0 +1,23 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: instavote
+  namespace: instavote
+spec:
+  secretRef:
+    name: github-token
+  url: https://github.com/devopsfoo/instavote-deploy.git
+
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: github-instavote
+  namespace: instavote
+spec:
+  address: https://github.com/devopsfoo/instavote-deploy
+  secretRef:
+    name: github-token
+
+
